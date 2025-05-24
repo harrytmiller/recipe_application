@@ -3,7 +3,6 @@
 import 'package:firebase_core/firebase_core.dart' show FirebaseOptions;
 import 'package:flutter/foundation.dart'
     show defaultTargetPlatform, kIsWeb, TargetPlatform;
-import 'package:flutter_dotenv/flutter_dotenv.dart';
 
 /// Default [FirebaseOptions] for use with your Firebase apps.
 ///
@@ -44,42 +43,42 @@ class DefaultFirebaseOptions {
     }
   }
 
-  static FirebaseOptions get web => FirebaseOptions(
-    apiKey: dotenv.env['FIREBASE_WEB_API_KEY']!,
-    appId: dotenv.env['FIREBASE_WEB_APP_ID']!,
-    messagingSenderId: dotenv.env['FIREBASE_MESSAGING_SENDER_ID']!,
-    projectId: dotenv.env['FIREBASE_PROJECT_ID']!,
-    authDomain: dotenv.env['FIREBASE_AUTH_DOMAIN']!,
-    storageBucket: dotenv.env['FIREBASE_STORAGE_BUCKET']!,
+  static const FirebaseOptions web = FirebaseOptions(
+    apiKey: 'AIzaSyA7znUHopLzITkiX_3elc_hjGf8m78hrUg',
+    appId: '1:80241012509:web:6e3ff41e5237f64db1bbf4',
+    messagingSenderId: '80241012509',
+    projectId: 'logpage-9aeb7',
+    authDomain: 'logpage-9aeb7.firebaseapp.com',
+    storageBucket: 'logpage-9aeb7.appspot.com',
   );
 
-  static FirebaseOptions get android => FirebaseOptions(
-    apiKey: dotenv.env['FIREBASE_ANDROID_API_KEY']!,
-    appId: dotenv.env['FIREBASE_ANDROID_APP_ID']!,
-    messagingSenderId: dotenv.env['FIREBASE_MESSAGING_SENDER_ID']!,
-    projectId: dotenv.env['FIREBASE_PROJECT_ID']!,
-    storageBucket: dotenv.env['FIREBASE_STORAGE_BUCKET']!,
+  static const FirebaseOptions android = FirebaseOptions(
+    apiKey: 'AIzaSyAI8K2u3pfF6EpO-zmitUEsDgJiyoYYoWk',
+    appId: '1:80241012509:android:c62b235c3c070ac5b1bbf4',
+    messagingSenderId: '80241012509',
+    projectId: 'logpage-9aeb7',
+    storageBucket: 'logpage-9aeb7.appspot.com',
   );
 
-  static FirebaseOptions get ios => FirebaseOptions(
-    apiKey: dotenv.env['FIREBASE_IOS_API_KEY']!,
-    appId: dotenv.env['FIREBASE_IOS_APP_ID']!,
-    messagingSenderId: dotenv.env['FIREBASE_MESSAGING_SENDER_ID']!,
-    projectId: dotenv.env['FIREBASE_PROJECT_ID']!,
-    storageBucket: dotenv.env['FIREBASE_STORAGE_BUCKET']!,
-    androidClientId: dotenv.env['FIREBASE_ANDROID_CLIENT_ID']!,
-    iosClientId: dotenv.env['FIREBASE_IOS_CLIENT_ID']!,
+  static const FirebaseOptions ios = FirebaseOptions(
+    apiKey: 'AIzaSyBRlka_nf3tWZb7ao0AxGWHQSD-Mpq28FQ',
+    appId: '1:80241012509:ios:b35059f97871e0a3b1bbf4',
+    messagingSenderId: '80241012509',
+    projectId: 'logpage-9aeb7',
+    storageBucket: 'logpage-9aeb7.appspot.com',
+    androidClientId: '80241012509-1eqi0s3hffimpuv85qn5jam8ffo7l3co.apps.googleusercontent.com',
+    iosClientId: '80241012509-tc099dthrolg83mg807o1fu03eb7ps3l.apps.googleusercontent.com',
     iosBundleId: 'com.example.recipeApp',
   );
 
-  static FirebaseOptions get macos => FirebaseOptions(
-    apiKey: dotenv.env['FIREBASE_MACOS_API_KEY']!,
-    appId: dotenv.env['FIREBASE_MACOS_APP_ID']!,
-    messagingSenderId: dotenv.env['FIREBASE_MESSAGING_SENDER_ID']!,
-    projectId: dotenv.env['FIREBASE_PROJECT_ID']!,
-    storageBucket: dotenv.env['FIREBASE_STORAGE_BUCKET']!,
-    androidClientId: dotenv.env['FIREBASE_ANDROID_CLIENT_ID']!,
-    iosClientId: dotenv.env['FIREBASE_MACOS_CLIENT_ID']!,
+  static const FirebaseOptions macos = FirebaseOptions(
+    apiKey: 'AIzaSyBRlka_nf3tWZb7ao0AxGWHQSD-Mpq28FQ',
+    appId: '1:80241012509:ios:9120589db52ef3c0b1bbf4',
+    messagingSenderId: '80241012509',
+    projectId: 'logpage-9aeb7',
+    storageBucket: 'logpage-9aeb7.appspot.com',
+    androidClientId: '80241012509-1eqi0s3hffimpuv85qn5jam8ffo7l3co.apps.googleusercontent.com',
+    iosClientId: '80241012509-m520h8gn42vrssgba413buclf0a42tuo.apps.googleusercontent.com',
     iosBundleId: 'com.example.recipeApp.RunnerTests',
   );
 }

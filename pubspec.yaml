@@ -92,7 +92,6 @@ flutter:
     - assets/videos/intro_video.mov
     - assets/videos/wasteawayintrovid.mov
     - assets/images/about_page/
-    - .env
 
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/assets-and-images/#resolution-aware
