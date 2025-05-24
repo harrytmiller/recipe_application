@@ -24,8 +24,6 @@ class DefaultFirebaseOptions {
         return android;
       case TargetPlatform.iOS:
         return ios;
-      case TargetPlatform.macOS:
-        return macos;
       case TargetPlatform.windows:
         throw UnsupportedError(
           'DefaultFirebaseOptions have not been configured for windows - '
@@ -44,41 +42,38 @@ class DefaultFirebaseOptions {
   }
 
   static const FirebaseOptions web = FirebaseOptions(
-    apiKey: 'AIzaSyA7znUHopLzITkiX_3elc_hjGf8m78hrUg',
-    appId: '1:80241012509:web:6e3ff41e5237f64db1bbf4',
-    messagingSenderId: '80241012509',
-    projectId: 'logpage-9aeb7',
-    authDomain: 'logpage-9aeb7.firebaseapp.com',
-    storageBucket: 'logpage-9aeb7.appspot.com',
+  apiKey: "AIzaSyCawwDlOoXBi0Kh8Y_EBK05UfK0aS9rL-U",
+  authDomain: "recipe-app-8e3a1.firebaseapp.com",
+  projectId: "recipe-app-8e3a1",
+  storageBucket: "recipe-app-8e3a1.firebasestorage.app",
+  messagingSenderId: "476461090974",
+  appId: "1:476461090974:web:0b516f7131fdc502bb138f"
   );
 
-  static const FirebaseOptions android = FirebaseOptions(
-    apiKey: 'AIzaSyAI8K2u3pfF6EpO-zmitUEsDgJiyoYYoWk',
-    appId: '1:80241012509:android:c62b235c3c070ac5b1bbf4',
-    messagingSenderId: '80241012509',
-    projectId: 'logpage-9aeb7',
-    storageBucket: 'logpage-9aeb7.appspot.com',
-  );
 
-  static const FirebaseOptions ios = FirebaseOptions(
-    apiKey: 'AIzaSyBRlka_nf3tWZb7ao0AxGWHQSD-Mpq28FQ',
-    appId: '1:80241012509:ios:b35059f97871e0a3b1bbf4',
-    messagingSenderId: '80241012509',
-    projectId: 'logpage-9aeb7',
-    storageBucket: 'logpage-9aeb7.appspot.com',
-    androidClientId: '80241012509-1eqi0s3hffimpuv85qn5jam8ffo7l3co.apps.googleusercontent.com',
-    iosClientId: '80241012509-tc099dthrolg83mg807o1fu03eb7ps3l.apps.googleusercontent.com',
-    iosBundleId: 'com.example.recipeApp',
-  );
 
-  static const FirebaseOptions macos = FirebaseOptions(
-    apiKey: 'AIzaSyBRlka_nf3tWZb7ao0AxGWHQSD-Mpq28FQ',
-    appId: '1:80241012509:ios:9120589db52ef3c0b1bbf4',
-    messagingSenderId: '80241012509',
-    projectId: 'logpage-9aeb7',
-    storageBucket: 'logpage-9aeb7.appspot.com',
-    androidClientId: '80241012509-1eqi0s3hffimpuv85qn5jam8ffo7l3co.apps.googleusercontent.com',
-    iosClientId: '80241012509-m520h8gn42vrssgba413buclf0a42tuo.apps.googleusercontent.com',
-    iosBundleId: 'com.example.recipeApp.RunnerTests',
-  );
+
+
+
+static const FirebaseOptions android = FirebaseOptions(
+  apiKey: 'AIzaSyCaithTVhl80gigSr7Y7W_1H0ARUVCmwfc',
+  appId: '1:476461090974:android:71d6e9a58f6ba4a9bb138f',
+  messagingSenderId: '476461090974',
+  projectId: 'recipe-app-8e3a1',
+  storageBucket: 'recipe-app-8e3a1.firebasestorage.app',
+);
+
+
+
+static const FirebaseOptions ios = FirebaseOptions(
+  apiKey: 'AIzaSyCSwziz-36RwjHYaOF73XB6DO-XI_JN984',
+  appId: '1:476461090974:ios:5ecef1cbd014662dbb138f',
+  messagingSenderId: '476461090974',
+  projectId: 'recipe-app-8e3a1',
+  storageBucket: 'recipe-app-8e3a1.firebasestorage.app',
+  iosBundleId: 'com.htm.RecipeAppIos',
+);
+
+
+
 }
