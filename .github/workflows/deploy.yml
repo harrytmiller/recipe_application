@@ -59,3 +59,8 @@ jobs:
         
         # Switch back to main branch
         git checkout main
+        
+    - name: Output deployment URL
+      run: |
+        echo "🚀 Deployment complete!"
+        echo "📱 Your app is live at: https://harrytmiller.github.io/recipe_application/"
