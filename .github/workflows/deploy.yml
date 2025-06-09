@@ -5,6 +5,11 @@ on:
     branches: [ main ]
   workflow_dispatch:
 
+permissions:
+  contents: write
+  pages: write
+  id-token: write
+
 jobs:
   deploy:
     runs-on: ubuntu-latest
@@ -29,9 +34,9 @@ jobs:
         git config --global user.name 'github-actions[bot]'
         git config --global user.email 'github-actions[bot]@users.noreply.github.com'
         
-        # Remove existing remote and add new one
+        # Remove existing remote and add new one with token
         git remote remove origin || true
-        git remote add origin https://github.com/harrytmiller/recipe_application.git
+        git remote add origin https://x-access-token:${{ secrets.GITHUB_TOKEN }}@github.com/harrytmiller/recipe_application.git
         
         # Create a new orphan branch for gh-pages
         git checkout --orphan gh-pages
