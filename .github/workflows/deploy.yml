@@ -11,7 +11,7 @@ permissions:
   id-token: write
 
 jobs:
-  deploy:
+  build:
     runs-on: ubuntu-latest
     
     steps:
@@ -29,38 +29,24 @@ jobs:
     - name: Build web
       run: flutter build web --release
       
+    - name: Upload build artifacts
+      uses: actions/upload-pages-artifact@v2
+      with:
+        path: build/web
+
+  deploy:
+    needs: build
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    
+    steps:
     - name: Deploy to GitHub Pages
+      id: deployment
+      uses: actions/deploy-pages@v2
+      
+    - name: Show deployment URL
       run: |
-        git config --global user.name 'github-actions[bot]'
-        git config --global user.email 'github-actions[bot]@users.noreply.github.com'
-        
-        # Remove existing remote and add new one with token
-        git remote remove origin || true
-        git remote add origin https://x-access-token:${{ secrets.GITHUB_TOKEN }}@github.com/harrytmiller/recipe_application.git
-        
-        # Create a new orphan branch for gh-pages
-        git checkout --orphan gh-pages
-        
-        # Remove all files from this branch
-        git rm -rf .
-        
-        # Copy the built web files to this branch
-        cp -r build/web/* .
-        
-        # Add a .nojekyll file to bypass Jekyll processing
-        touch .nojekyll
-        
-        # Add and commit the web files
-        git add .
-        git commit -m "Deploy Flutter web app"
-        
-        # Push to gh-pages branch
-        git push origin gh-pages --force
-        
-        # Switch back to main branch
-        git checkout main
-        
-    - name: Output deployment URL
-      run: |
-        echo "🚀 Deployment complete!"
-        echo "📱 Your app is live at: https://harrytmiller.github.io/recipe_application/"
+        echo "🚀 Recipe Application deployed successfully!"
+        echo "📱 Live at: ${{ steps.deployment.outputs.page_url }}
