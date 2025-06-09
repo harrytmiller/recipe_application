@@ -1,9 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:cloud_firestore/cloud_firestore.dart';
-import 'faq_manager.dart';
-
-final TextEditingController textController = TextEditingController();
-final FirestoreService firestoreService = FirestoreService();
 
 class QAItem extends StatelessWidget {
   final String title;
@@ -34,18 +29,18 @@ class QAItem extends StatelessWidget {
       ),
       children: children
           .map((child) => Padding(
-        padding: const EdgeInsets.all(8.0),
-        child: Align(
-          alignment: Alignment.topLeft,
-          child: DefaultTextStyle(
-            style: TextStyle(
-              color: childrenColor,
-              fontSize: 16.0,
-            ),
-            child: child,
-          ),
-        ),
-      ))
+                padding: const EdgeInsets.all(8.0),
+                child: Align(
+                  alignment: Alignment.topLeft,
+                  child: DefaultTextStyle(
+                    style: TextStyle(
+                      color: childrenColor,
+                      fontSize: 16.0,
+                    ),
+                    child: child,
+                  ),
+                ),
+              ))
           .toList(),
       backgroundColor: backgroundColor,
     );
@@ -67,27 +62,99 @@ class _FAQ_pageState extends State<FAQ_page> {
   @override
   void initState() {
     super.initState();
+    _allQuestions = [
+      const QAItem(
+        title: 'Q: What is the main goal of the Recipe Generator app?',
+        children: [
+          Text(
+              'A: The core concept of this system is to mitigate environmental impact by reducing food waste, aligning with sustainable practices.'),
+        ],
+      ),
+      const QAItem(
+        title: 'Q: Who are the primary users of the Recipe Generator app?',
+        children: [
+          Text(
+              'A: The primary users are registered WasteAway users who seek to reduce food waste and generate personalized recipes.'),
+        ],
+      ),
+      const QAItem(
+        title: 'Q: How does the Recipe Generation feature work?',
+        children: [
+          Text(
+              'A: Users select ingredients through the form, triggering the recipe generation process. The system generates recipes based on selected ingredients and user food restrictions.'),
+        ],
+      ),
+      const QAItem(
+        title:
+            'Q: Can I customize the generated recipes based on dietary restrictions?',
+        children: [
+          Text(
+              'A: Yes, users can set dietary preferences and restrictions, ensuring that the generated recipes align with their specific needs.'),
+        ],
+      ),
+      const QAItem(
+        title:
+            'Q: What happens if I don\'t provide enough ingredients for the generation process?',
+        children: [
+          Text(
+              'A: If not enough ingredients or ingredient types are provided, an error message will be displayed, prompting users to select more ingredients and re-initiate the process.'),
+        ],
+      ),
+      const QAItem(
+        title: 'Q: How are ingredients saved in the app?',
+        children: [
+          Text(
+              'A: Users can save ingredients through the Save Ingredients feature. The ingredient manager validates the data, and the ingredients are stored in the backend attached to the user\'s profile.'),
+        ],
+      ),
+      const QAItem(
+        title: 'Q: Can I edit my user profile details?',
+        children: [
+          Text(
+              'A: Yes, users can edit their user profile details, including name, email, password, food restrictions, and bio. The updated information is then reflected in the backend.'),
+        ],
+      ),
+      const QAItem(
+        title:
+            'Q: What happens if I enter incorrect data during profile editing?',
+        children: [
+          Text(
+              'A: If there\'s invalid data, the app displays an error message (e.g., "Invalid Name Entry" or "Invalid Password Entry"). Users correct the form and resubmit.'),
+        ],
+      ),
+      const QAItem(
+        title: 'Q: How does the app handle expired ingredients?',
+        children: [
+          Text(
+              'A: The app notifies users of expired ingredients during the recipe generation process. Users can choose to continue without expired items or halt the process to add more ingredients.'),
+        ],
+      ),
+      const QAItem(
+        title: 'Q: Can I add my own recipes to the app?',
+        children: [
+          Text(
+              'A: Yes, users can add their own recipes through the Add Own Recipes feature. The system validates the submitted details, and upon success, the custom recipe is added to the app\'s database.'),
+        ],
+      ),
+      const QAItem(
+        title:
+            'Q: What happens if I make errors while adding my own recipe?',
+        children: [
+          Text(
+              'A: If there are errors (e.g., missing fields), the app displays an error message, allowing users to review and correct their form before submission.'),
+        ],
+      ),
+      const QAItem(
+        title: 'Q: What to do if your question is not here?',
+        children: [
+          Text(
+              'A: Go to About us page and send one of the team members your question.'),
+        ],
+      ),
+    ];
+    _filteredQuestions.addAll(_allQuestions);
     _searchController = TextEditingController();
     _searchController.addListener(_onSearchChanged);
-    _fetchQuestions();
-  }
-
-  void _fetchQuestions() {
-    firestoreService.getQuestionStream().listen((querySnapshot) {
-      setState(() {
-        _allQuestions.clear(); // Clear the existing questions
-        _allQuestions = querySnapshot.docs.map((document) {
-          return QAItem(
-            title: document['note'],
-            children: [
-              Text(document['answer'] ?? ''),
-            ],
-          );
-        }).toList();
-        _filteredQuestions.clear(); // Clear the filtered questions as well
-        _filteredQuestions.addAll(_allQuestions);
-      });
-    });
   }
 
   @override
@@ -112,11 +179,6 @@ class _FAQ_pageState extends State<FAQ_page> {
       appBar: AppBar(
         title: const Text('Frequently Asked Questions'),
         backgroundColor: Colors.green,
-      ),
-      floatingActionButton: FloatingActionButton(
-        onPressed: openQuestionBox,
-        backgroundColor: Colors.green,
-        child: const Icon(Icons.add),
       ),
       body: Column(
         children: [
@@ -145,9 +207,7 @@ class _FAQ_pageState extends State<FAQ_page> {
                   style: ElevatedButton.styleFrom(
                     backgroundColor: Colors.green,
                     padding: const EdgeInsets.symmetric(
-                      horizontal: 24.0,
-                      vertical: 12.0,
-                    ),
+                        horizontal: 24.0, vertical: 12.0),
                     minimumSize: const Size(0, 50),
                   ),
                   child: const Text(
@@ -166,49 +226,10 @@ class _FAQ_pageState extends State<FAQ_page> {
             child: ListView.builder(
               itemCount: _filteredQuestions.length,
               itemBuilder: (context, index) {
-                return Padding(
-                  padding: const EdgeInsets.symmetric(vertical: 8.0),
-                  child: _filteredQuestions[index],
-                );
+                return _filteredQuestions[index];
               },
             ),
           ),
-        ],
-      ),
-    );
-  }
-
-  void openQuestionBox() {
-    showDialog(
-      context: context,
-      builder: (context) => AlertDialog(
-        content: TextField(
-          controller: textController,
-        ),
-        actions: [
-          ElevatedButton(
-            onPressed: () async {
-              try {
-                await firestoreService.addQuestion(context, textController.text);
-                ScaffoldMessenger.of(context).showSnackBar(
-                  SnackBar(
-                    content: Text('Question added successfully'),
-                    backgroundColor: Colors.green,
-                  ),
-                );
-              } catch (e) {
-                ScaffoldMessenger.of(context).showSnackBar(
-                  SnackBar(
-                    content: Text('$e'),
-                    backgroundColor: Colors.red,
-                  ),
-                );
-              }
-              textController.clear();
-              Navigator.pop(context);
-            },
-            child: Text("Add"),
-          )
         ],
       ),
     );

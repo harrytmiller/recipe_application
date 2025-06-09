@@ -82,11 +82,10 @@ class AboutUsPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: const Text('About Us', style: TextStyle(fontSize: 45)), //title
-        backgroundColor: Colors.green, //background
-        toolbarHeight: MediaQuery.of(context).size.height * 0.06,
-        shape: Border.all(strokeAlign: BorderSide.strokeAlignOutside),
+
+            appBar: AppBar(
+        backgroundColor: Colors.green[700],
+        title: const Text('About Us'),
       ),
       backgroundColor: Colors.green[200],
       body: SingleChildScrollView(
@@ -173,7 +172,9 @@ class AboutUsPage extends StatelessWidget {
                                         children: [
                                           const Text(
                                             'Josh Varney',
-                                            ),
+                                            style: TextStyle(
+                                                fontSize: 14, color: Colors.white),
+                                          ),
                                           const SizedBox(height: 4),
                                           const Text(
                                             'All-round Developer',
@@ -241,20 +242,20 @@ class AboutUsPage extends StatelessWidget {
                                         crossAxisAlignment: CrossAxisAlignment.start,
                                         children: [
                                           const Text(
-                                            'Hazaloid Jenkins',
+                                            'Harry Miller',
                                             style: TextStyle(
                                                 fontSize: 14, color: Colors.white),
                                           ),
                                           const SizedBox(height: 4),
                                           const Text(
-                                            'Front-end Developer',
+                                            'All-round Developer',
                                             style: TextStyle(
                                                 fontSize: 12, color: Colors.white),
                                           ),
                                           const SizedBox(height: 8),
                                           const Expanded(
                                             child: Text(
-                                              'I am haz, I helped develope this app, i like tattoos and scarface. Feel free to email me if you have any enquiries about our app.',
+                                              'I am Harry, I helped develope this app, enjoy our application feel free to email me about it.',
                                               style: TextStyle(
                                                   fontSize: 12, color: Colors.white),
                                               overflow: TextOverflow.fade,

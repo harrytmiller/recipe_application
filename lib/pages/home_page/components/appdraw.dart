@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_log/pages/profile_page/profile_page.dart'; // replace with your actual package names
 import 'package:flutter_log/pages/recipe_generation_page/generation_page.dart';
-import 'package:flutter_log/pages/add_recipe_page/add_recipe.dart';
 import 'package:flutter_log/pages/add_remove_ingredients_page/add_remove_ingredients_page.dart';
 import 'package:flutter_log/pages/faqs_page/FAQ_page.dart';
 import 'package:flutter_log/pages/about_us_page/about_page.dart';
@@ -60,21 +59,7 @@ class AppDrawer extends StatelessWidget {
                       builder: (context) => const GenerationPage()));
             },
           ),
-          ListTile(
-            title: Row(
-              children: [
-                Icon(Icons.cookie, size: 29),
-                SizedBox(
-                  width: MediaQuery.of(context).size.width * 0.01,
-                ),
-                const Text('Add Recipe', style: TextStyle(fontSize: 20)),
-              ],
-            ),
-            onTap: () {
-              Navigator.push(context,
-                  MaterialPageRoute(builder: (context) => const AddRecipe()));
-            },
-          ),
+          
           ListTile(
             title: Row(
               children: [

@@ -66,36 +66,11 @@ class _ProfilePageState extends State<ProfilePage> {
             children: [
               _buildProfileImage(),
               SizedBox(height: MediaQuery.of(context).size.height * 0.01),
-              SizedBox(
-                height: MediaQuery.of(context).size.height *
-                    0.185, // Adjust the height of Username/Food restriction card
-                width:
-                    //X-Axis for Username/food restriction card
-                    MediaQuery.of(context).size.width * 1.0,
-                child: Card(
-                  elevation: 5.0,
-                  shape: RoundedRectangleBorder(
-                    borderRadius: BorderRadius.circular(15.0),
-                  ),
-                  child: Padding(
-                    padding: const EdgeInsets.all(12.0),
-                    child: Column(
-                      children: [
-                        _buildInfoItem('Username: ', 'username'),
-                        _buildInfoItem('Food Restriction: ', 'foodRestriction')
-                      ],
-                    ),
-                  ),
-                ),
-              ),
-              SizedBox(
-                //Y-Axis Pos for under username card
-                height: MediaQuery.of(context).size.height * 0.015,
-              ),
+              
+
               SizedBox(
                 // Height of user information card
                 width: MediaQuery.of(context).size.width * 1.0,
-              height: MediaQuery.of(context).size.height * 0.50,
                 child: Card(
                   elevation: 5.0,
                   shape: RoundedRectangleBorder(
@@ -106,7 +81,10 @@ class _ProfilePageState extends State<ProfilePage> {
                     child: Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
+                      
                         _buildSectionTitle('User Information'),
+                        _buildInfoItem('Username: ', 'username'),
+
                         _buildInfoItem('Age: ', 'age'),
                         _buildInfoItem('First Name: ', 'firstName'),
                         _buildInfoItem('Last Name: ', 'lastName'),
@@ -134,7 +112,7 @@ class _ProfilePageState extends State<ProfilePage> {
     return const Center(
       child: CircleAvatar(
         radius: 80,
-        foregroundImage: AssetImage('assets/images/profile_page/demo_pic.jpeg'),
+        foregroundImage: AssetImage('assets/images/about_page/blank.jpg'),
       ),
     );
   }
@@ -296,20 +274,7 @@ class _ProfilePageState extends State<ProfilePage> {
                       return null;
                     },
                   ),
-                  TextFormField(
-                    controller: _foodRestictionController,
-                    decoration:
-                        const InputDecoration(labelText: 'Food Restriction'),
-                    validator: (value) {
-                      if (value == null || value.isEmpty) {
-                        return 'Please enter a last name';
-                      }
-                      if (value.length < 2) {
-                        return 'Last name must be at least 2 characters';
-                      }
-                      return null;
-                    },
-                  ),
+
                   TextFormField(
                     controller: _bioController,
                     decoration: const InputDecoration(labelText: 'Bio'),

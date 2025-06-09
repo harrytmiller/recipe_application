@@ -53,7 +53,7 @@ class _AddRemoveIngredientsState extends State<AddRemoveIngredients> {
         resizeToAvoidBottomInset: false,
         appBar: AppBar(
           backgroundColor: Colors.green[700],
-          title: const Text('Add and Remove Ingredients Page'),
+          title: const Text('Ingredients Manager'),
         ),
         backgroundColor: Colors.green[200],
         body: Center(
