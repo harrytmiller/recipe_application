@@ -16,7 +16,7 @@ jobs:
     - name: Setup Flutter
       uses: subosito/flutter-action@v2
       with:
-        flutter-version: '3.16.0'
+        flutter-version: '3.32.0'
         
     - name: Install dependencies
       run: flutter pub get
@@ -28,6 +28,10 @@ jobs:
       run: |
         git config --global user.name 'github-actions[bot]'
         git config --global user.email 'github-actions[bot]@users.noreply.github.com'
+        
+        # Remove existing remote and add new one
+        git remote remove origin || true
+        git remote add origin https://github.com/harrytmiller/recipe_application.git
         
         # Create a new orphan branch for gh-pages
         git checkout --orphan gh-pages
