@@ -30,7 +30,7 @@ jobs:
       run: flutter build web --release
       
     - name: Upload build artifacts
-      uses: actions/upload-pages-artifact@v2
+      uses: actions/upload-pages-artifact@v3
       with:
         path: build/web
 
@@ -44,9 +44,9 @@ jobs:
     steps:
     - name: Deploy to GitHub Pages
       id: deployment
-      uses: actions/deploy-pages@v2
+      uses: actions/deploy-pages@v4
       
     - name: Show deployment URL
       run: |
         echo "🚀 Recipe Application deployed successfully!"
-        echo "📱 Live at: ${{ steps.deployment.outputs.page_url }}
+        echo "📱 Live at: ${{ steps.deployment.outputs.page_url }}"
